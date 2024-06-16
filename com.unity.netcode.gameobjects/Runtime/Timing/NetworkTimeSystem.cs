@@ -138,8 +138,6 @@ namespace Unity.Netcode
                 m_NetworkTickSystem.Reset(LocalTime, ServerTime);
             }
 
-            m_NetworkTickSystem.UpdateTick(LocalTime, ServerTime);
-
             if (!m_ConnectionManager.LocalClient.IsServer)
             {
                 Sync(LastSyncedServerTimeSec + m_NetworkManager.RealTimeProvider.UnscaledDeltaTime, m_NetworkTransport.GetCurrentRtt(NetworkManager.ServerClientId) / 1000d);

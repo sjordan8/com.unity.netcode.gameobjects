@@ -73,28 +73,15 @@ namespace Unity.Netcode
         /// <summary>
         /// Called after advancing the time system to run ticks based on the difference in time.
         /// </summary>
-        /// <param name="localTimeSec">The local time in seconds</param>
-        /// <param name="serverTimeSec">The server time in seconds</param>
         public void UpdateTick(double localTimeSec, double serverTimeSec)
         {
-            // store old local tick to know how many fixed ticks passed
-            var previousLocalTick = LocalTime.Tick;
+            var localTime = new NetworkTime(TickRate, localTimeSec);
+            var serverTime = new NetworkTime(TickRate, serverTimeSec);
 
-            LocalTime = new NetworkTime(TickRate, localTimeSec);
-            ServerTime = new NetworkTime(TickRate, serverTimeSec);
-
-            // cache times here so that we can adjust them to temporary values while simulating ticks.
-            var cacheLocalTime = LocalTime;
-            var cacheServerTime = ServerTime;
-
-            var currentLocalTick = LocalTime.Tick;
-            var localToServerDifference = currentLocalTick - ServerTime.Tick;
-
-            for (int i = previousLocalTick + 1; i <= currentLocalTick; i++)
+            if (LocalTime.Tick + 1 <= localTime.Tick)
             {
-                // set exposed time values to correct fixed values
-                LocalTime = new NetworkTime(TickRate, i);
-                ServerTime = new NetworkTime(TickRate, i - localToServerDifference);
+                LocalTime = new NetworkTime(TickRate, LocalTime.Tick + 1);
+                ServerTime = new NetworkTime(TickRate, ServerTime.Tick + 1);
 
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
                 s_Tick.Begin();
@@ -104,10 +91,6 @@ namespace Unity.Netcode
                 s_Tick.End();
 #endif
             }
-
-            // Set exposed time to values from tick system
-            LocalTime = cacheLocalTime;
-            ServerTime = cacheServerTime;
         }
     }
 }

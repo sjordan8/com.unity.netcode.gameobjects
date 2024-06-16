@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotnet-tools", "dotnet-tools", "{AD151638-5656-4133-ABE6-30D40AB2E5B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "netcode.standards", "dotnet-tools\netcode.standards\netcode.standards.csproj", "{24A54DF0-D135-4E1A-AC46-7E8EF7463E57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24A54DF0-D135-4E1A-AC46-7E8EF7463E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A54DF0-D135-4E1A-AC46-7E8EF7463E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A54DF0-D135-4E1A-AC46-7E8EF7463E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A54DF0-D135-4E1A-AC46-7E8EF7463E57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24A54DF0-D135-4E1A-AC46-7E8EF7463E57} = {AD151638-5656-4133-ABE6-30D40AB2E5B6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D6828D9-D905-4037-9C82-FAD073526D3B}
+	EndGlobalSection
+EndGlobal

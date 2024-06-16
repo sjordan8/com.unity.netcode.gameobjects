@@ -50,11 +50,16 @@ namespace Unity.Netcode
                         MessageManager.CleanupDisconnectedClients();
 
                         AnticipationSystem.ProcessReanticipation();
+                        NetworkTimeSystem.UpdateTime();
+                    }
+                    break;
+                case NetworkUpdateStage.FixedUpdate:
+                    {
+                        NetworkTickSystem.UpdateTick();
                     }
                     break;
                 case NetworkUpdateStage.PreUpdate:
                     {
-                        NetworkTimeSystem.UpdateTime();
                         AnticipationSystem.Update();
                     }
                     break;
